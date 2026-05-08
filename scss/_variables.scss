@@ -1,0 +1,41 @@
+    $corPrimaria : #F8F9FA;
+    $corAlternativa : aliceblue;
+    $corSecundaria: rgb(243, 219, 113);
+    $corBackground: #000000; 
+    $corTexto: #333;
+    $corAcao: #007BFF;
+    $corAcesso: #28A745;
+    $corDanger: #c72b2b;
+    $corCard: #B0B0B0;
+
+    $font-size-titulo: clamp(1.5rem, 2vw, 2rem);
+    $font-size-subTitulo: clamp(1rem, 1.2vw, 1.5rem);
+    $font-size-text: clamp(0.8rem, 1vw, 1rem);
+    $font-size-small: clamp(0.6rem, 0.8vw, 1rem);
+    $font-family-titulo: "Montserrat",sans-serif;
+    $font-family-subTitulo: "Inter",sans-serif;
+    $font-family-text: "Open",sans-serif;
+
+    //serve p margin e paddiing.
+    $space-sm: 8px;
+    $space-md: 16px;
+    $space-lg: 24px;
+
+    $border-sm:0.5px;
+    $border-md:1px ;
+    $border-lg:2px;
+
+    $border-radius: 8px;
+    $border-radius-lg: 16px;
+
+    $radius-sm: 6px;
+    $radius-md: 12px;
+    $radius-lg: 20px;
+
+    $transition-default: 0.3s ease-in-out;
+    $translateY-default: translateY(-5px);
+    $translateX-default: translateX(8px);
+
+    $mobile: 480px;
+    $tablet: 780px;
+    $desktop: 1280px;

@@ -1,0 +1,64 @@
+@mixin flexCenter($justify-content,$flex-direction,$algin-items:center){
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $algin-items;
+    flex-direction: $flex-direction;
+}
+
+@mixin hoverDefault(){
+    transition: $transition-default;
+    &:hover{
+        transform: $translateY-default;
+        box-shadow: 0px 2px 3px 0px #000;
+    }
+}
+
+@mixin grid(){
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(min(250px, 100%),1fr));
+    gap: 15px 10px;
+    padding: 20px 40px;
+}
+
+@mixin borderSolid($size,$corBackground){
+    border:$size solid $corBackground;
+    @content;
+}
+
+@mixin mediaMobile(){
+    @media  (max-width: $mobile){
+        //aq coloco informações do elemento no qual esse mixin será usaado.
+        @content 
+    }
+}
+
+@mixin card(){
+    background-color: $corAlternativa;
+    padding: $space-sm;
+    margin: 0;
+}
+
+// Card de figurinha
+@mixin card {
+    background: $cor-card;
+    border-radius: $border-radius-lg;
+    padding: $padding-card;
+    border: 1px solid $cor-borda;
+    transition: transform .2s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+    }
+}
+
+@mixin botao($cor) {
+    background: $cor;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+
+    &:hover{
+        box-shadow: 0px 2px 3px 0px #000;
+    }
+}

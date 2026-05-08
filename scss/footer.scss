@@ -1,0 +1,88 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+footer {
+    width: 100%;
+    height: auto;
+    @include flexCenter(center, column);
+    background-color: $corTexto;
+    padding: $space-md 0;
+
+}
+
+.footer-cont {
+    max-width: 1200px;
+    width: 100%;
+    height: auto;
+    @include flexCenter(center, row, stretch);
+    gap: 30px;
+    padding: $space-lg;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    @include flexCenter(left, column, stretch);
+    gap: 15px;
+    padding: $space-sm $space-md;
+}
+
+.footer-section:nth-of-type(1) {
+    padding: $space-sm $space-lg;
+    font-family: $font-family-subTitulo;
+    font-size: $font-size-small;
+    color: $corCard;
+
+    h2 {
+        color: $corSecundaria;
+        font-family: $font-family-subTitulo;
+        font-size: $font-size-titulo;
+    }
+}
+
+.footer-section:nth-of-type(n + 2) {
+    ul {
+        list-style: none;
+        @include flexCenter (left, column, null     );
+        gap: 12px;
+        text-decoration: none;
+
+        li {
+            a {
+                font-family: $font-family-text;
+                font-size: $font-size-small;
+                color: $corCard;
+                transition: $transition-default;
+                display: inline-block; // permite a animação funcionar, o inline é p não ocupat todo a espaço, mas sim a linha d elemente a, ou span e o block p ativar.
+
+                &:hover{
+                    transform: $translateX-default;
+                    color: $corSecundaria;
+                }
+            }
+        }
+    }
+
+    h3 {
+        border: none;
+        border-left: 4px solid $corSecundaria;
+        padding: 0 $space-sm;
+        color: $corPrimaria;
+        font-family: $font-family-subTitulo;
+        font-size: $font-size-subTitulo;
+    }
+}
+
+.footer-bottom {
+    width: 80%;
+    height: auto;
+    border-top: 1px solid $corCard;
+    padding: $space-sm;
+    p{
+        @include flexCenter(center,row);
+        padding: $space-md;
+        font-family: $font-family-text;
+        font-size: $font-size-small;
+        color: $corCard;
+    }
+}

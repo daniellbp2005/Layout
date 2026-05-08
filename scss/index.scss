@@ -1,0 +1,72 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family-text;
+    font-size: $font-family-text;
+    background-color: $corAlternativa;
+    min-height: 100vh;
+}
+
+main {
+    @include flexCenter(center, row, stretch);
+    width: 100%;
+    min-height: 100vh;
+}
+
+.cont-left {
+    background-color: $corSecundaria;
+    flex: 1;
+    @include flexCenter(center, column);
+    padding: $space-sm $space-md;
+}
+
+.cont-centro {
+    background-color: $corAcao;
+    flex: 4;
+    @include grid();
+    padding: $space-sm $space-lg;
+
+    .categoria {
+        grid-column: 1/-1;
+        @include flexCenter(center, row);
+
+        ul {
+            width: 100%;
+            @include flexCenter(center,row);
+            border: 1px solid $corCard;
+            border-radius: $border-radius;
+            list-style: none;
+            padding: $space-md 0;
+            gap: 15px;
+
+            li {
+                a {
+                    text-decoration: none;
+                    @include botao($corTexto);
+                    border-radius: $border-radius;
+                    font-size: $font-size-small;
+                    font-family: $font-family-subTitulo;
+                }
+            }
+        }
+    }
+
+    .card {
+        background-color: $corCard;
+        height: auto;
+    }
+}
+
+.cont-right {
+    background-color: $corAcesso;
+    flex: 1;
+    @include flexCenter(center, column);
+    padding: $space-sm $space-md;
+}
