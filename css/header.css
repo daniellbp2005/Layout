@@ -29,6 +29,26 @@ nav ul li {
   font-size: clamp(0.8rem, 1vw, 1rem);
   font-family: "Inter", sans-serif;
 }
+nav ul button {
+  background-color: #007BFF;
+  padding: 8px 8px;
+  border: none;
+  border-radius: 8px;
+  transition: transform 0.2s ease-in-out;
+  font-family: "Inter", sans-serif;
+  color: #F8F9FA;
+  font-size: clamp(0.8rem, 1vw, 1rem);
+}
+nav ul button:hover {
+  transform: translateY(-5px);
+}
+nav ul img .invert {
+  filter: invert(100%);
+}
+nav ul img .perfil {
+  width: 30px;
+  height: 30px;
+}
 
 a {
   text-decoration: none;
