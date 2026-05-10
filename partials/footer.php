@@ -8,7 +8,7 @@
             <h3>Navegação</h3>
             <ul>
                 <li><a href="">Formulário</a></li>
-                <li><a href="">Homa Page</a></li>
+                <li><a href="">Home Page</a></li>
                 <li><a href="">Produtos</a></li>
             </ul>
         </div>

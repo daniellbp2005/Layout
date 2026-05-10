@@ -62,3 +62,10 @@
         box-shadow: 0px 2px 3px 0px #000;
     }
 }
+
+
+@mixin icon-base($size, $color: currentColor){
+    width: $size;
+    height: $size;
+    display: inline-block;
+}
