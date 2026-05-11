@@ -10,63 +10,284 @@
 body {
     font-family: $font-family-text;
     font-size: $font-family-text;
-    background-color: $corAlternativa;
+    background-color: $corPrimaria;
     min-height: 100vh;
 }
 
 main {
-    @include flexCenter(center, row, stretch);
     width: 100%;
     min-height: 100vh;
-}
+    padding: $space-lg;
 
-.cont-left {
-    background-color: $corSecundaria;
-    flex: 1;
-    @include flexCenter(center, column);
-    padding: $space-sm $space-md;
-}
-
-.cont-centro {
-    background-color: $corAcao;
-    flex: 4;
-    @include grid();
-    padding: $space-sm $space-lg;
-
-    .categoria {
-        grid-column: 1/-1;
+    section:nth-of-type(1) {
+        width: 100%;
+        height: auto;
+        border: none;
+        border-radius: $border-radius-lg;
+        background-color: $corCard;
+        padding: $space-sm;
+        min-height: 300px;
         @include flexCenter(center, row);
 
-        ul {
-            width: 100%;
-            @include flexCenter(center,row);
-            border: 1px solid $corCard;
-            border-radius: $border-radius;
-            list-style: none;
-            padding: $space-md 0;
-            gap: 15px;
+        .esquerda {
+            width: 45%;
+            height: auto;
+            padding: $space-md;
+            @include flexCenter(left, column, start);
+            gap: $space-lg;
 
-            li {
-                a {
-                    text-decoration: none;
-                    @include botao($corTexto);
+            p:nth-of-type(1) {
+                width: auto;
+                background-color: $corAcao;
+                border: none;
+                border-radius: $border-radius-lg;
+                padding: $space-sm;
+                font-size: $font-size-small;
+                font-family: $font-family-text;
+                color: $corPrimaria;
+                transition: transform .2s ease;
+
+                &:hover {
+                    transform: translateY(-3px);
+
+                }
+            }
+
+            p:nth-of-type(2) {
+                font-size: $font-size-text;
+                font-family: $font-family-subTitulo;
+                width: 60%;
+            }
+
+            h3 {
+                font-size: $font-size-titulo;
+                font-family: $font-family-subTitulo;
+
+                span {
+                    color: $corAcesso;
+                }
+            }
+
+            .row {
+                @include flexCenter(center, row);
+                width: auto;
+                height: auto;
+                gap: $space-sm;
+
+                button:nth-of-type(1) {
+                    background-color: $corTexto;
+                    padding: $space-sm $space-sm;
+                    border: none;
                     border-radius: $border-radius;
-                    font-size: $font-size-small;
+                    transition: transform .2s ease-in-out;
                     font-family: $font-family-subTitulo;
+                    color: $corPrimaria;
+                    font-size: $font-size-text;
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: translateY(-3px);
+                    }
+                }
+
+                button:nth-of-type(2) {
+                    background-color: $corTexto;
+                    padding: $space-sm $space-sm;
+                    border: none;
+                    border-radius: $border-radius;
+                    transition: transform .2s ease-in-out;
+                    font-family: $font-family-subTitulo;
+                    color: $corPrimaria;
+                    font-size: $font-size-text;
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: translateY(-3px);
+                    }
+                }
+            }
+        }
+
+        .direita {
+            width: 55%;
+            height: auto;
+            padding: $space-md;
+            gap: $space-sm;
+            @include flexCenter(center, row);
+
+            .card-section {
+                background-color: chocolate;
+                aspect-ratio: 3/4;
+                width: 100%;
+                flex: 1;
+                border: none;
+                border-radius: $border-radius-lg;
+                transition: transform .2s ease-in-out;
+
+                .cima {
+                    height: 50%;
+
+                    img {
+                        overflow: hidden;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                .baixo {
+                    height: 50%;
+                    @include flexCenter(center, column);
+                    text-align: center;
+                    gap: 4px;
+
+                    h1 {
+                        font-family: $font-family-subTitulo;
+                        font-size: $font-size-titulo;
+                    }
+
+                    p {
+                        font-family: $font-family-text;
+                        font-size: $font-size-text;
+                        padding: 0 $space-sm;
+                    }
+
+                    .row {
+                        @include flexCenter(center, row);
+
+                        p {
+                            font-family: $font-family-text;
+                            font-size: $font-size-text;
+                        }
+                    }
+                }
+
+                &:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 1px 1px 2px 3px $corBackground;
                 }
             }
         }
     }
 
-    .card {
-        background-color: $corCard;
-        height: auto;
-    }
 }
 
-.cont-right {
-    background-color: $corAcesso;
-    flex: 1;
-    @include flexCenter(center, column);
-    padding: $space-sm $space-md;
+.menu {
+    width: 100%;
+    overflow: hidden;
+
+    .row-scroll {
+        width: 100%;
+        padding: $space-lg $space-lg 0 $space-lg;
+        @include flexCenter(left, row);
+
+        .seta {
+            @include icon-base(28px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background-color: transparent;
+            border: 0px solid;
+
+            &:hover {
+                stroke: $corAcao;
+            }
+        }
+
+        .linha-setas {
+            @include flexCenter(space-between, row);
+            width: 100%;
+            .tema {
+                p {
+                    font-family: $font-family-subTitulo;
+                    font-size: $font-size-subTitulo;
+                    @include flexCenter(center, row);
+                    .trofeu {
+                        @include icon-base(28px);
+                    }
+                }
+            }
+            .setas {
+                @include flexCenter(center, row);
+                gap: $space-sm;
+            }
+        }
+    }
+
+    #rowScroll {
+        display: flex;
+        overflow-x: auto;
+        scrollbar-width: none;
+        gap: $space-sm;
+        padding: $space-lg;
+
+        .card {
+            min-width: 160px;
+            flex-shrink: 0;
+            aspect-ratio: 3/4;
+            max-width: 225px;
+            border: none;
+            border-radius: $border-radius-lg;
+            background-color: $corCard;
+            overflow: hidden;
+            transition: transform .2s ease-in-out;
+
+            .cima {
+                width: 100%;
+                height: 60%;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .baixo {
+                width: 100%;
+                height: 40%;
+                @include flexCenter(center, column);
+                gap: $space-sm;
+
+                h1 {
+                    font-family: $font-family-subTitulo;
+                    font-size: $font-size-titulo;
+                }
+
+                p {
+                    font-family: $font-family-text;
+                    font-size: $font-size-text;
+                    padding: 0 $space-sm;
+                }
+
+                .row-card {
+                    @include flexCenter(center, row);
+
+                    p {
+                        font-family: $font-family-text;
+                        font-size: $font-size-text;
+                    }
+
+                    button {
+                        background-color: $corAcao;
+                        padding: $space-sm $space-sm;
+                        border: none;
+                        border-radius: $border-radius;
+                        transition: transform .2s ease-in-out;
+                        font-family: $font-family-subTitulo;
+                        color: $corPrimaria;
+                        font-size: $font-size-text;
+                        cursor: pointer;
+
+                        &:hover {
+                            transform: translateY(-3px);
+                            background-color: $corAcesso ;
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                transform: translateY(-5px);
+                box-shadow: 1px 1px 2px 3px $corAcao;
+            }
+        }
+    }
 }
