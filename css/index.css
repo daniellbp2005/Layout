@@ -7,7 +7,7 @@
 body {
   font-family: "Open", sans-serif;
   font-size: "Open", sans-serif;
-  background-color: #F8F9FA;
+  background-color: #0e0e0e;
   min-height: 100vh;
 }
 
@@ -21,13 +21,18 @@ main section:nth-of-type(1) {
   height: auto;
   border: none;
   border-radius: 16px;
-  background-color: #B0B0B0;
+  background-color: #161616;
   padding: 8px;
   min-height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  transition: transform 0.2s ease-in-out;
+}
+main section:nth-of-type(1):hover {
+  transform: translateY(-5px);
+  box-shadow: 1px 1px 2px 3px #007BFF;
 }
 main section:nth-of-type(1) .esquerda {
   width: 45%;
@@ -41,8 +46,8 @@ main section:nth-of-type(1) .esquerda {
 }
 main section:nth-of-type(1) .esquerda p:nth-of-type(1) {
   width: auto;
-  background-color: #007BFF;
-  border: none;
+  background-color: #0e0e0e;
+  border: 1px solid #F8F9FA;
   border-radius: 16px;
   padding: 8px;
   font-size: clamp(0.6rem, 0.8vw, 1rem);
@@ -52,18 +57,23 @@ main section:nth-of-type(1) .esquerda p:nth-of-type(1) {
 }
 main section:nth-of-type(1) .esquerda p:nth-of-type(1):hover {
   transform: translateY(-3px);
+  border: 1px solid rgb(243, 219, 113);
+  background-color: #161616;
+  color: rgb(243, 219, 113);
 }
 main section:nth-of-type(1) .esquerda p:nth-of-type(2) {
   font-size: clamp(0.8rem, 1vw, 1rem);
   font-family: "Inter", sans-serif;
+  color: #C9D1D9;
   width: 60%;
 }
 main section:nth-of-type(1) .esquerda h3 {
   font-size: clamp(1.5rem, 2vw, 2rem);
   font-family: "Inter", sans-serif;
+  color: #F8F9FA;
 }
 main section:nth-of-type(1) .esquerda h3 span {
-  color: #28A745;
+  color: #8B949E;
 }
 main section:nth-of-type(1) .esquerda .row {
   display: flex;
@@ -74,33 +84,22 @@ main section:nth-of-type(1) .esquerda .row {
   height: auto;
   gap: 8px;
 }
-main section:nth-of-type(1) .esquerda .row button:nth-of-type(1) {
-  background-color: #272727;
+main section:nth-of-type(1) .esquerda .row button:nth-of-type(n + 1) {
+  background-color: #F8F9FA;
   padding: 8px 8px;
-  border: none;
+  border: 1px solid #F8F9FA;
   border-radius: 8px;
   transition: transform 0.2s ease-in-out;
   font-family: "Inter", sans-serif;
-  color: #F8F9FA;
+  color: #161616;
   font-size: clamp(0.8rem, 1vw, 1rem);
   cursor: pointer;
 }
-main section:nth-of-type(1) .esquerda .row button:nth-of-type(1):hover {
+main section:nth-of-type(1) .esquerda .row button:nth-of-type(n + 1):hover {
+  background-color: #161616;
+  border: 1px solid #F8F9FA;
   transform: translateY(-3px);
-}
-main section:nth-of-type(1) .esquerda .row button:nth-of-type(2) {
-  background-color: #272727;
-  padding: 8px 8px;
-  border: none;
-  border-radius: 8px;
-  transition: transform 0.2s ease-in-out;
-  font-family: "Inter", sans-serif;
   color: #F8F9FA;
-  font-size: clamp(0.8rem, 1vw, 1rem);
-  cursor: pointer;
-}
-main section:nth-of-type(1) .esquerda .row button:nth-of-type(2):hover {
-  transform: translateY(-3px);
 }
 main section:nth-of-type(1) .direita {
   width: 55%;
@@ -113,11 +112,11 @@ main section:nth-of-type(1) .direita {
   flex-direction: row;
 }
 main section:nth-of-type(1) .direita .card-section {
-  background-color: chocolate;
+  background-color: #0e0e0e;
   aspect-ratio: 3/4;
   width: 100%;
   flex: 1;
-  border: none;
+  border: 1px solid #2a2a2a;
   border-radius: 16px;
   transition: transform 0.2s ease-in-out;
 }
@@ -141,25 +140,29 @@ main section:nth-of-type(1) .direita .card-section .baixo {
 main section:nth-of-type(1) .direita .card-section .baixo h1 {
   font-family: "Inter", sans-serif;
   font-size: clamp(1.5rem, 2vw, 2rem);
+  color: #F8F9FA;
 }
 main section:nth-of-type(1) .direita .card-section .baixo p {
   font-family: "Open", sans-serif;
   font-size: clamp(0.8rem, 1vw, 1rem);
   padding: 0 8px;
+  color: #C9D1D9;
 }
-main section:nth-of-type(1) .direita .card-section .baixo .row {
+main section:nth-of-type(1) .direita .card-section .baixo .row-card-banner {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
 }
-main section:nth-of-type(1) .direita .card-section .baixo .row p {
+main section:nth-of-type(1) .direita .card-section .baixo .row-card-banner p {
+  text-decoration: underline solid #28A745;
   font-family: "Open", sans-serif;
   font-size: clamp(0.8rem, 1vw, 1rem);
+  color: #28A745;
 }
 main section:nth-of-type(1) .direita .card-section:hover {
   transform: translateY(-5px);
-  box-shadow: 1px 1px 2px 3px #0e0e0e;
+  box-shadow: 1px 1px 2px 3px rgb(243, 219, 113);
 }
 
 .menu {
@@ -182,6 +185,7 @@ main section:nth-of-type(1) .direita .card-section:hover {
   cursor: pointer;
   background-color: transparent;
   border: 0px solid;
+  stroke: #B0B0B0;
 }
 .menu .row-scroll .seta:hover {
   stroke: #007BFF;
@@ -196,15 +200,20 @@ main section:nth-of-type(1) .direita .card-section:hover {
 .menu .row-scroll .linha-setas .tema p {
   font-family: "Inter", sans-serif;
   font-size: clamp(1rem, 1.2vw, 1.5rem);
+  color: #B0B0B0;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  gap: 8px;
 }
 .menu .row-scroll .linha-setas .tema p .trofeu {
   width: 28px;
   height: 28px;
   display: inline-block;
+}
+.menu .row-scroll .linha-setas .tema p span {
+  color: #C9D1D9;
 }
 .menu .row-scroll .linha-setas .setas {
   display: flex;
@@ -212,6 +221,21 @@ main section:nth-of-type(1) .direita .card-section:hover {
   align-items: center;
   flex-direction: row;
   gap: 8px;
+}
+.menu .row-scroll .linha-setas .setas span {
+  color: #8B949E;
+  font-size: clamp(0.6rem, 0.8vw, 1rem);
+  font-family: "Open", sans-serif;
+  text-decoration: underline solid #8B949E;
+  transition: all 0.2s ease;
+}
+.menu .row-scroll .linha-setas .setas span:hover a {
+  color: #007BFF;
+  text-decoration: underline solid #007BFF;
+}
+.menu .row-scroll .linha-setas .setas button {
+  border: none;
+  background-color: transparent;
 }
 .menu #rowScroll {
   display: flex;
@@ -223,11 +247,11 @@ main section:nth-of-type(1) .direita .card-section:hover {
 .menu #rowScroll .card {
   min-width: 160px;
   flex-shrink: 0;
-  aspect-ratio: 3/4;
+  aspect-ratio: 3/4.5;
   max-width: 225px;
-  border: none;
+  border: 1px solid #2a2a2a;
   border-radius: 16px;
-  background-color: #B0B0B0;
+  background-color: #161616;
   overflow: hidden;
   transition: transform 0.2s ease-in-out;
 }
@@ -250,11 +274,13 @@ main section:nth-of-type(1) .direita .card-section:hover {
 }
 .menu #rowScroll .card .baixo h1 {
   font-family: "Inter", sans-serif;
-  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-size: clamp(1rem, 1.2vw, 1.5rem);
+  color: #F8F9FA;
 }
 .menu #rowScroll .card .baixo p {
   font-family: "Open", sans-serif;
   font-size: clamp(0.8rem, 1vw, 1rem);
+  color: #C9D1D9;
   padding: 0 8px;
 }
 .menu #rowScroll .card .baixo .row-card {
@@ -266,6 +292,8 @@ main section:nth-of-type(1) .direita .card-section:hover {
 .menu #rowScroll .card .baixo .row-card p {
   font-family: "Open", sans-serif;
   font-size: clamp(0.8rem, 1vw, 1rem);
+  color: #28A745;
+  text-decoration: underline solid #28A745;
 }
 .menu #rowScroll .card .baixo .row-card button {
   background-color: #007BFF;

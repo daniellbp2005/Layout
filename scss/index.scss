@@ -10,7 +10,7 @@
 body {
     font-family: $font-family-text;
     font-size: $font-family-text;
-    background-color: $corPrimaria;
+    background-color: $corBackground;
     min-height: 100vh;
 }
 
@@ -24,10 +24,16 @@ main {
         height: auto;
         border: none;
         border-radius: $border-radius-lg;
-        background-color: $corCard;
+        background-color: $corTerciaria;
         padding: $space-sm;
         min-height: 300px;
         @include flexCenter(center, row);
+        transition: transform .2s ease-in-out;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 1px 1px 2px 3px $corAcao;
+        }
 
         .esquerda {
             width: 45%;
@@ -38,8 +44,8 @@ main {
 
             p:nth-of-type(1) {
                 width: auto;
-                background-color: $corAcao;
-                border: none;
+                background-color: $corBackground;
+                border: 1px solid $corPrimaria;
                 border-radius: $border-radius-lg;
                 padding: $space-sm;
                 font-size: $font-size-small;
@@ -49,22 +55,26 @@ main {
 
                 &:hover {
                     transform: translateY(-3px);
-
+                    border: 1px solid $corSecundaria;
+                    background-color: $corTerciaria;
+                    color: $corSecundaria;
                 }
             }
 
             p:nth-of-type(2) {
                 font-size: $font-size-text;
                 font-family: $font-family-subTitulo;
+                color: $corTextoNormal;
                 width: 60%;
             }
 
             h3 {
                 font-size: $font-size-titulo;
                 font-family: $font-family-subTitulo;
+                color: $corPrimaria;
 
                 span {
-                    color: $corAcesso;
+                    color: $corTextoSub;
                 }
             }
 
@@ -74,35 +84,22 @@ main {
                 height: auto;
                 gap: $space-sm;
 
-                button:nth-of-type(1) {
-                    background-color: $corTexto;
+                button:nth-of-type(n + 1) {
+                    background-color: $corPrimaria;
                     padding: $space-sm $space-sm;
-                    border: none;
+                    border: 1px solid $corPrimaria;
                     border-radius: $border-radius;
                     transition: transform .2s ease-in-out;
                     font-family: $font-family-subTitulo;
-                    color: $corPrimaria;
+                    color: $corTerciaria;
                     font-size: $font-size-text;
                     cursor: pointer;
 
                     &:hover {
+                        background-color: $corTerciaria;
+                        border: 1px solid $corPrimaria;
                         transform: translateY(-3px);
-                    }
-                }
-
-                button:nth-of-type(2) {
-                    background-color: $corTexto;
-                    padding: $space-sm $space-sm;
-                    border: none;
-                    border-radius: $border-radius;
-                    transition: transform .2s ease-in-out;
-                    font-family: $font-family-subTitulo;
-                    color: $corPrimaria;
-                    font-size: $font-size-text;
-                    cursor: pointer;
-
-                    &:hover {
-                        transform: translateY(-3px);
+                        color: $corPrimaria
                     }
                 }
             }
@@ -116,11 +113,11 @@ main {
             @include flexCenter(center, row);
 
             .card-section {
-                background-color: chocolate;
+                background-color: $corBackground;
                 aspect-ratio: 3/4;
                 width: 100%;
                 flex: 1;
-                border: none;
+                border: 1px solid $corBordaCard;
                 border-radius: $border-radius-lg;
                 transition: transform .2s ease-in-out;
 
@@ -143,32 +140,35 @@ main {
                     h1 {
                         font-family: $font-family-subTitulo;
                         font-size: $font-size-titulo;
+                        color: $corPrimaria
                     }
 
                     p {
                         font-family: $font-family-text;
                         font-size: $font-size-text;
                         padding: 0 $space-sm;
+                        color: $corTextoNormal
                     }
 
-                    .row {
+                    .row-card-banner {
                         @include flexCenter(center, row);
 
                         p {
+                            text-decoration: underline solid $corAcesso ;
                             font-family: $font-family-text;
                             font-size: $font-size-text;
+                            color: $corAcesso;
                         }
                     }
                 }
 
                 &:hover {
                     transform: translateY(-5px);
-                    box-shadow: 1px 1px 2px 3px $corBackground;
+                    box-shadow: 1px 1px 2px 3px $corSecundaria;
                 }
             }
         }
     }
-
 }
 
 .menu {
@@ -186,6 +186,7 @@ main {
             cursor: pointer;
             background-color: transparent;
             border: 0px solid;
+            stroke: $corSeta;
 
             &:hover {
                 stroke: $corAcao;
@@ -195,19 +196,47 @@ main {
         .linha-setas {
             @include flexCenter(space-between, row);
             width: 100%;
+
             .tema {
                 p {
                     font-family: $font-family-subTitulo;
                     font-size: $font-size-subTitulo;
+                    color: $corSeta;
                     @include flexCenter(center, row);
+                    gap: $space-sm;
+
                     .trofeu {
                         @include icon-base(28px);
                     }
+
+                    span {
+                        color: $corTextoNormal
+                    }
                 }
             }
+
             .setas {
                 @include flexCenter(center, row);
                 gap: $space-sm;
+
+                span {
+                    color: $corTextoSub;
+                    font-size: $font-size-small;
+                    font-family: $font-family-text;
+                    text-decoration: underline solid $corTextoSub;
+                    transition: all .2s ease;
+
+                    &:hover a{
+                        color: $corAcao;
+                        text-decoration: underline solid $corAcao;
+
+                    }
+                }
+
+                button {
+                    border: none;
+                    background-color: transparent;
+                }
             }
         }
     }
@@ -222,11 +251,11 @@ main {
         .card {
             min-width: 160px;
             flex-shrink: 0;
-            aspect-ratio: 3/4;
+            aspect-ratio: 3/4.5;
             max-width: 225px;
-            border: none;
+            border: 1px solid #2a2a2a;
             border-radius: $border-radius-lg;
-            background-color: $corCard;
+            background-color: $corTerciaria;
             overflow: hidden;
             transition: transform .2s ease-in-out;
 
@@ -248,12 +277,14 @@ main {
 
                 h1 {
                     font-family: $font-family-subTitulo;
-                    font-size: $font-size-titulo;
+                    font-size: $font-size-subTitulo;
+                    color: $corPrimaria;
                 }
 
                 p {
                     font-family: $font-family-text;
                     font-size: $font-size-text;
+                    color: $corTextoNormal;
                     padding: 0 $space-sm;
                 }
 
@@ -263,6 +294,8 @@ main {
                     p {
                         font-family: $font-family-text;
                         font-size: $font-size-text;
+                        color: $corAcesso;
+                        text-decoration: underline solid $corAcesso;
                     }
 
                     button {

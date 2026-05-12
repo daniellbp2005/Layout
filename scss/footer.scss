@@ -5,7 +5,7 @@ footer {
     width: 100%;
     height: auto;
     @include flexCenter(center, column);
-    background-color: $corTexto;
+    background-color: $corTerciaria;
     padding: $space-md 0;
 
 }
@@ -31,7 +31,7 @@ footer {
     padding: $space-sm $space-lg;
     font-family: $font-family-subTitulo;
     font-size: $font-size-small;
-    color: $corCard;
+    color: $corSeta;
 
     h2 {
         color: $corSecundaria;
@@ -51,7 +51,7 @@ footer {
             a {
                 font-family: $font-family-text;
                 font-size: $font-size-small;
-                color: $corCard;
+                color: $corSeta;
                 transition: $transition-default;
                 display: inline-block; // permite a animação funcionar, o inline é p não ocupat todo a espaço, mas sim a linha d elemente a, ou span e o block p ativar.
 
@@ -76,13 +76,13 @@ footer {
 .footer-bottom {
     width: 80%;
     height: auto;
-    border-top: 1px solid $corCard;
+    border-top: 1px solid $corSeta;
     padding: $space-sm;
     p{
         @include flexCenter(center,row);
         padding: $space-md;
         font-family: $font-family-text;
         font-size: $font-size-small;
-        color: $corCard;
+        color: $corSeta;
     }
 }
