@@ -115,6 +115,8 @@ main {
             .card-section {
                 background-color: $corBackground;
                 aspect-ratio: 3/4;
+                min-width: 200px;
+                flex-shrink: 0;
                 width: 100%;
                 flex: 1;
                 border: 1px solid $corBordaCard;
@@ -122,9 +124,11 @@ main {
                 transition: transform .2s ease-in-out;
 
                 .cima {
-                    height: 50%;
+                    height: 60%;
+                    padding: $space-sm;
 
                     img {
+                        border-radius: $border-radius-lg;
                         overflow: hidden;
                         width: 100%;
                         height: 100%;
@@ -132,7 +136,7 @@ main {
                 }
 
                 .baixo {
-                    height: 50%;
+                    height: 40%;
                     @include flexCenter(center, column);
                     text-align: center;
                     gap: 4px;
@@ -205,7 +209,7 @@ main {
                     @include flexCenter(center, row);
                     gap: $space-sm;
 
-                    .trofeu {
+                    svg.trofeu {
                         @include icon-base(28px);
                     }
 
@@ -241,7 +245,7 @@ main {
         }
     }
 
-    #rowScroll {
+    .row {
         display: flex;
         overflow-x: auto;
         scrollbar-width: none;
@@ -262,8 +266,10 @@ main {
             .cima {
                 width: 100%;
                 height: 60%;
-
+                padding: $space-sm;
                 img {
+                    border-radius: $border-radius-lg;
+                    overflow: hidden;
                     width: 100%;
                     height: 100%;
                 }
