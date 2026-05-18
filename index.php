@@ -3,6 +3,7 @@ require_once 'includes/crud.php';
 require_once 'includes/delete.php';
 
 $categoria_get = isset($_GET['categoria']) ?  trim($_GET['categoria']) : "";
+$verTudo = isset($_GET['verTudo']) ? trim($_GET['verTudo']) : "";
 $figurinhas = readAll($pdo, 'tb_figurinhas');
 $categorias = array_unique(array_column($figurinhas, 'categoria'));
 ?>
@@ -73,7 +74,7 @@ $categorias = array_unique(array_column($figurinhas, 'categoria'));
                     </div>
                     <div class="baixo">
                         <h1>Albúm Copa do Mundo 2026</h1>
-                        <p>Compre seu albúm da Copa do Mundo de 2026, com 10 pacotes inclusos</p>
+                        <p>Albúm da Copa do Mundo de 2026, com 10 pacotes inclusos</p>
                         <div class="row-card-banner">
                             <p>R$ 50.00</p>
                         </div>
@@ -96,40 +97,56 @@ $categorias = array_unique(array_column($figurinhas, 'categoria'));
                             </p>
                         </div>
                         <div class="setas">
-                            <span><a href="">Ver Todos</a></span>
+                            <span>
+                                <?php
+                                if ($verTudo != 'Copa do Mundo 2026') {
+                                    echo '<a href="?verTudo=Copa do Mundo 2026">Ver Todos</a>';
+                                }
+                                if ($verTudo == 'Copa do Mundo 2026') {
+                                    echo '<a href="index.php">Ver Menos</a>';
+                                }
+                                ?>
+                            </span>
                             <button class="setas" onclick="mover('copa2026',-1)">
-                                 <?= icon('setaL', 'seta') ?>
+                                <?= icon('setaL', 'seta') ?>
                             </button>
 
                             <button class="setas" onclick="mover('copa2026',1)">
-                                 <?= icon('setaR', 'seta') ?>
+                                <?= icon('setaR', 'seta') ?>
                             </button>
                         </div>
                     </div>
                 </div>
 
                 <div class="row" id="copa2026">
-                <?php 
-                foreach($figurinhas as $figurinha){
-                    if($figurinha['categoria'] == 'Copa do Mundo 2026'){
-                        echo '
+                    <?php
+                    $contador = 0;
+                    if ($verTudo == 'Copa do Mundo 2026') {
+                        $limite = 101;
+                    } else {
+                        $limite = 8;
+                    }
+                    foreach ($figurinhas as $figurinha) {
+                        if ($figurinha['categoria'] == 'Copa do Mundo 2026' && $contador < $limite) {
+                            $contador += 1;
+                            echo '
                         <div class="card">
                             <div class="cima">
-                                <img src="'.$figurinha['capa'].'" alt="">
+                                <img src="' . $figurinha['capa'] . '" alt="">
                             </div>
                             <div class="baixo">
-                                <h1>'.$figurinha['nome'].'</h1>
-                                <p>'.$figurinha['descricao'].'</p>
+                                <h1>' . $figurinha['nome'] . '</h1>
+                                <p>' . $figurinha['descricao'] . '</p>
                                 <div class="row-card">
-                                    <p>R$ '.$figurinha['preco'].'</p>
+                                    <p>R$ ' . $figurinha['preco'] . '</p>
                                     <button>Comprar</button>
                                 </div>
                             </div>
                         </div>
-                        ';  
-                    }                  
-                }
-                ?>    
+                        ';
+                        }
+                    }
+                    ?>
                 </div>
             </div>
 
@@ -146,40 +163,56 @@ $categorias = array_unique(array_column($figurinhas, 'categoria'));
                             </p>
                         </div>
                         <div class="setas">
-                            <span><a href="">Ver Todos</a></span>
+                            <span>
+                                <?php
+                                if ($verTudo != 'Copa do Mundo 2022') {
+                                    echo '<a href="?verTudo=Copa do Mundo 2022">Ver Todos</a>';
+                                }
+                                if ($verTudo == 'Copa do Mundo 2022') {
+                                    echo '<a href="index.php">Ver Menos</a>';
+                                }
+                                ?>
+                            </span>
                             <button class="setas" onclick="mover('copa2022',-1)">
-                                 <?= icon('setaL', 'seta') ?>
+                                <?= icon('setaL', 'seta') ?>
                             </button>
 
                             <button class="setas" onclick="mover('copa2022',1)">
-                                 <?= icon('setaR', 'seta') ?>
+                                <?= icon('setaR', 'seta') ?>
                             </button>
                         </div>
                     </div>
                 </div>
 
                 <div class="row" id="copa2022">
-                <?php 
-                foreach($figurinhas as $figurinha){
-                    if($figurinha['categoria'] == 'Copa do Mundo 2022'){
+                    <?php
+                    if ($verTudo == 'Copa do Mundo 2022') {
+                        $limite = 101;
+                    } else {
+                        $limite = 8;
+                    }
+                    $contador = 0;
+                    foreach ($figurinhas as $figurinha) {
+                        if ($figurinha['categoria'] == 'Copa do Mundo 2022' && $contador < $limite) {
+                        $contador += 1;
                         echo '
-                        <div class="card">
-                            <div class="cima">
-                                <img src="'.$figurinha['capa'].'" alt="">
-                            </div>
-                            <div class="baixo">
-                                <h1>'.$figurinha['nome'].'</h1>
-                                <p>'.$figurinha['descricao'].'</p>
-                                <div class="row-card">
-                                    <p>R$ '.$figurinha['preco'].'</p>
-                                    <button>Comprar</button>
+                            <div class="card">
+                                <div class="cima">
+                                    <img src="' . $figurinha['capa'] . '" alt="">
+                                </div>
+                                <div class="baixo">
+                                    <h1>' . $figurinha['nome'] . '</h1>
+                                    <p>' . $figurinha['descricao'] . '</p>
+                                    <div class="row-card">
+                                        <p>R$ ' . $figurinha['preco'] . '</p>
+                                        <button>Comprar</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        ';  
-                    }                  
-                }
-                ?>    
+                        ';
+                        }
+                    }
+                    ?>
                 </div>
             </div>
 
@@ -195,43 +228,59 @@ $categorias = array_unique(array_column($figurinhas, 'categoria'));
                             </p>
                         </div>
                         <div class="setas">
-                            <span><a href="">Ver Todos</a></span>
+                            <span>
+                                <?php
+                                if ($verTudo != 'Copa do Mundo 2018') {
+                                    echo '<a href="?verTudo=Copa do Mundo 2018">Ver Todos</a>';
+                                }
+                                if ($verTudo == 'Copa do Mundo 2018') {
+                                    echo '<a href="index.php">Ver Menos</a>';
+                                }
+                                ?>
+                            </span>
                             <button class="setas" onclick="mover('copa2018',-1)">
-                                 <?= icon('setaL', 'seta') ?>
+                                <?= icon('setaL', 'seta') ?>
                             </button>
 
                             <button class="setas" onclick="mover('copa2018',1)">
-                                 <?= icon('setaR', 'seta') ?>
+                                <?= icon('setaR', 'seta') ?>
                             </button>
                         </div>
                     </div>
                 </div>
 
                 <div class="row" id="copa2018">
-                <?php 
-                foreach($figurinhas as $figurinha){
-                    if($figurinha['categoria'] == 'Copa do Mundo 2018'){
+                    <?php
+                    if ($verTudo == 'Copa do Mundo 2018') {
+                        $limite = 101;
+                    } else {
+                        $limite = 8;
+                    }
+                    $contador = 0;
+                    foreach ($figurinhas as $figurinha) {
+                        if ($figurinha['categoria'] == 'Copa do Mundo 2018' && $contador < $limite) {
+                        $contador += 1;
                         echo '
-                        <div class="card">
-                            <div class="cima">
-                                <img src="'.$figurinha['capa'].'" alt="">
-                            </div>
-                            <div class="baixo">
-                                <h1>'.$figurinha['nome'].'</h1>
-                                <p>'.$figurinha['descricao'].'</p>
-                                <div class="row-card">
-                                    <p>R$ '.$figurinha['preco'].'</p>
-                                    <button>Comprar</button>
+                            <div class="card">
+                                <div class="cima">
+                                    <img src="' . $figurinha['capa'] . '" alt="">
+                                </div>
+                                <div class="baixo">
+                                    <h1>' . $figurinha['nome'] . '</h1>
+                                    <p>' . $figurinha['descricao'] . '</p>
+                                    <div class="row-card">
+                                        <p>R$ ' . $figurinha['preco'] . '</p>
+                                        <button>Comprar</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        ';  
-                    }                  
-                }
-                ?>    
+                        ';
+                        }
+                    }
+                    ?>
                 </div>
-
-                <div class="conteiner-scroll">
+            </div>
+            <div class="conteiner-scroll">
 
                 <div class="row-scroll">
 
@@ -243,42 +292,57 @@ $categorias = array_unique(array_column($figurinhas, 'categoria'));
                             </p>
                         </div>
                         <div class="setas">
-                            <span><a href="">Ver Todos</a></span>
+                            <span>
+                                <?php
+                                if ($verTudo != 'Copa do Mundo 2014') {
+                                    echo '<a href="?verTudo=Copa do Mundo 2014">Ver Todos</a>';
+                                }
+                                if ($verTudo == 'Copa do Mundo 2014') {
+                                    echo '<a href="index.php">Ver Menos</a>';
+                                }
+                                ?>
+                            </span>
                             <button class="setas" onclick="mover('copa2014',-1)">
-                                 <?= icon('setaL', 'seta') ?>
+                                <?= icon('setaL', 'seta') ?>
                             </button>
 
                             <button class="setas" onclick="mover('copa2014',1)">
-                                 <?= icon('setaR', 'seta') ?>
+                                <?= icon('setaR', 'seta') ?>
                             </button>
                         </div>
                     </div>
                 </div>
 
                 <div class="row" id="copa2014">
-                <?php 
-                foreach($figurinhas as $figurinha){
-                    if($figurinha['categoria'] == 'Copa do Mundo 2014'){
+                    <?php
+                    if ($verTudo == 'Copa do Mundo 2014') {
+                        $limite = 101;
+                    } else {
+                        $limite = 8;
+                    }
+                    $contador = 0;
+                    foreach ($figurinhas as $figurinha) {
+                        if ($figurinha['categoria'] == 'Copa do Mundo 2014' && $contador < $limite) {
+                        $contador += 1;
                         echo '
-                        <div class="card">
-                            <div class="cima">
-                                <img src="'.$figurinha['capa'].'" alt="">
-                            </div>
-                            <div class="baixo">
-                                <h1>'.$figurinha['nome'].'</h1>
-                                <p>'.$figurinha['descricao'].'</p>
-                                <div class="row-card">
-                                    <p>R$ '.$figurinha['preco'].'</p>
-                                    <button>Comprar</button>
+                            <div class="card">
+                                <div class="cima">
+                                    <img src="' . $figurinha['capa'] . '" alt="">
+                                </div>
+                                <div class="baixo">
+                                    <h1>' . $figurinha['nome'] . '</h1>
+                                    <p>' . $figurinha['descricao'] . '</p>
+                                    <div class="row-card">
+                                        <p>R$ ' . $figurinha['preco'] . '</p>
+                                        <button>Comprar</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        ';  
-                    }                  
-                }
-                ?>    
+                        ';
+                        }
+                    }
+                    ?>
                 </div>
-            </div>
             </div>
         </div>
     </main>
