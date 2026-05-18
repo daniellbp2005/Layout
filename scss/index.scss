@@ -17,7 +17,6 @@ body {
 main {
     width: 100%;
     min-height: 100vh;
-    padding: $space-lg;
 
     section:nth-of-type(1) {
         width: 100%;
@@ -114,8 +113,9 @@ main {
 
             .card-section {
                 background-color: $corBackground;
-                aspect-ratio: 3/4;
+                aspect-ratio: 3/4.5;
                 min-width: 200px;
+                max-width: 260px;
                 flex-shrink: 0;
                 width: 100%;
                 flex: 1;
@@ -178,6 +178,10 @@ main {
 .menu {
     width: 100%;
     overflow: hidden;
+    .conteiner-scroll {
+        max-width: 100%;
+        overflow: hidden;
+    }
 
     .row-scroll {
         width: 100%;
@@ -230,7 +234,7 @@ main {
                     text-decoration: underline solid $corTextoSub;
                     transition: all .2s ease;
 
-                    &:hover a{
+                    &:hover a {
                         color: $corAcao;
                         text-decoration: underline solid $corAcao;
 
@@ -251,10 +255,13 @@ main {
         scrollbar-width: none;
         gap: $space-sm;
         padding: $space-lg;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        max-width: 100%;
+        box-sizing: border-box;
 
         .card {
-            min-width: 160px;
-            flex-shrink: 0;
+            flex: 0 0 220px;
             aspect-ratio: 3/4.5;
             max-width: 225px;
             border: 1px solid #2a2a2a;
@@ -262,11 +269,13 @@ main {
             background-color: $corTerciaria;
             overflow: hidden;
             transition: transform .2s ease-in-out;
+            scroll-snap-align: start;
 
             .cima {
                 width: 100%;
                 height: 60%;
                 padding: $space-sm;
+
                 img {
                     border-radius: $border-radius-lg;
                     overflow: hidden;
@@ -330,3 +339,62 @@ main {
         }
     }
 }
+
+//CELULAR
+@media (max-width:5766px) {}
+
+//TABLET
+@media (max-width:768px) {
+    main section:nth-of-type(1) {
+        flex-direction: row;
+
+        .esquerda {
+            width: 50%;
+            gap: $space-md;
+        }
+
+        .direita {
+            width: 50%;
+            .card-section:nth-of-type(n + 2){
+                display: none;
+            }
+            .card-section {
+                max-width: 220px;
+
+                .baixo {
+                    h1 {
+                        font-size: $font-size-subTitulo;
+                    }
+
+                    p {
+                        font-size: $font-size-text;
+                    }
+                }
+            }
+        }
+    }
+
+    .menu {
+        .row {
+            .card {
+                max-width: 180px;
+            }
+        }
+
+        .conteiner-scroll {
+            .row-scroll {
+                .linha-setas {
+                    button {
+                        display: none;
+                    }
+                    .setas {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//LAPTOPS
+@media (max-width:1024px) {}
