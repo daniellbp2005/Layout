@@ -20,9 +20,10 @@
     padding: 20px 40px;
 }
 
-@mixin borderSolid($size,$corBackground){
+@mixin borderSolid($size,$corBackground,$sizeRad){
     border:$size solid $corBackground;
     @content;
+    border-radius: $sizeRad;
 }
 
 @mixin mediaMobile(){

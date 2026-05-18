@@ -31,7 +31,7 @@ nav {
         }
 
 
-        button {
+        .btn {
             background-color: $corAcao;
             padding: $space-sm $space-sm;
             border: none;
@@ -71,26 +71,24 @@ nav {
         }
     }
 
-    ul:nth-of-type(1){
+    ul:nth-of-type(1) {
         li {
             font-size: $font-size-text;
             font-family: $font-family-subTitulo;
-            
+
 
             a {
                 border: none;
                 padding: 31px $space-sm;
                 position: relative;
-                // @include flexCenter(center,row);
-                // height: 
-                // 100%;
+
 
                 &::after {
                     content: "";
                     position: absolute;
                     bottom: 0; // grupo no chão
-                    left: 0;    
-                    background-color:$corSecundaria;
+                    left: 0;
+                    background-color: $corSecundaria;
                     transform: scaleX(0); //começa escondido
                     transition: transform 0.3s ease;
                     width: 100%;
@@ -99,21 +97,94 @@ nav {
                 }
 
                 &:hover {
-                    &::after{
+                    &::after {
                         transform: scaleX(1);
                     }
                 }
-
             }
+        }
 
+        li {
+
+            //     position:relative;
+            //     .active {
+            //         position: absolute;
+            //         bottom: 0; // grupo no chão
+            //         left: 0;
+            //         background-color: $corSecundaria;
+            //         transform: scaleX(1.1);
+            //         transition: transform 0.3s ease;
+            //         width: 100%;
+            //         height: 3px;
+            //         transform-origin: center;
+            //     }
+            .active{
+                // background-color: black;
+                // width: 20px;
+                height: auto
+                
+            }
         }
     }
 
-    ul:nth-of-type(2){
-        @include flexCenter(center,row);
-        li{
-            a{
-                @include flexCenter(center,row);
+    ul:nth-of-type(2) {
+        @include flexCenter(center, row);
+
+        li {
+            a {
+                @include flexCenter(center, row);
+            }
+        }
+
+        .dropdown, .dropdown-icon {
+            position: relative;
+            button {
+                @include flexCenter(center, row);
+                background-color: transparent;
+                border: none;
+            }
+
+            .menu-perfil-drop {
+                opacity: 0;
+                visibility: hidden;
+                position: absolute;
+                width: max-content;
+                height: auto;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-10px);
+                padding: $space-md $space-sm;
+                
+                transition: opacity 0.3s ease-in-out;
+            }
+
+            &:hover .menu-perfil-drop {
+                opacity: 1;
+                visibility: visible;
+                transform: translateX(-50%) translateY(0);
+            }
+
+            .menu-perfil-drop ul {
+                @include flexCenter(center, column);
+                width: 120px;
+                height: auto;
+                padding: $space-md $space-sm;
+                text-align: center;
+                background-color: $corTerciaria;
+                @include borderSolid(1px, $corSecundaria, $border-radius-lg);
+                z-index: 100;
+            }
+
+            .menu-perfil-drop li {
+                color: $corTextoNormal;
+                font-size: $font-size-text;
+                font-family: $font-family-subTitulo;
+                transition: transform .2s ease;
+
+                &:hover {
+                    text-decoration: underline;
+                    color: $corAcao;
+                }
             }
         }
     }
@@ -122,4 +193,74 @@ nav {
 a {
     text-decoration: none;
     color: $corPrimaria;
+}
+
+.tab-bar {
+    display: none;
+}
+
+//LAPTOPS
+@media (max-width:1024px){
+
+    nav:not(.tab-bar){
+        padding: 0 4%;
+        overflow: hidden;
+    }
+
+    ul:nth-of-type(1){
+        .titulo{
+            margin: 0px;
+        }
+        gap: $space-sm;
+    }
+}
+
+//TABLET
+@media (max-width:768px){
+    // importar para _icons
+    // svg.produtos{
+    //     @include icon-base(28px);
+    // }
+    // svg.promocoes{
+    //     @include icon-base(28px);
+    // }
+    // svg.formulario{
+    //     @include icon-base(28px);
+    // }
+    // svg.login{
+    //     @include icon-base(28px);
+    // }
+    .active{
+        color: $corAcao;
+    }    
+    .tab-bar{
+        display: flex;
+        position: fixed;  
+        bottom: 0;     
+        left: 0;           
+        z-index: 1000;    
+        background-color: $corTerciaria;
+        border-top: 1px solid $corSecundaria;
+        height: 64px;
+        width: 100vw;
+        @include flexCenter(center, row);
+        text-align: center;
+        gap: $space-md;
+        .tab-item{
+            flex: 1;
+        }
+    }
+    body {
+        padding-bottom: 64px; // mesmo valor do height da tab bar
+    }
+    nav{
+        ul:nth-of-type(1) li{
+            display: none;
+        }
+    }
+}
+
+//CELULAR
+@media (max-width:576px){
+
 }
