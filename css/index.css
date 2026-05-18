@@ -14,7 +14,6 @@ body {
 main {
   width: 100%;
   min-height: 100vh;
-  padding: 24px;
 }
 main section:nth-of-type(1) {
   width: 100%;
@@ -113,8 +112,9 @@ main section:nth-of-type(1) .direita {
 }
 main section:nth-of-type(1) .direita .card-section {
   background-color: #0e0e0e;
-  aspect-ratio: 3/4;
+  aspect-ratio: 3/4.5;
   min-width: 200px;
+  max-width: 260px;
   flex-shrink: 0;
   width: 100%;
   flex: 1;
@@ -171,6 +171,10 @@ main section:nth-of-type(1) .direita .card-section:hover {
 
 .menu {
   width: 100%;
+  overflow: hidden;
+}
+.menu .conteiner-scroll {
+  max-width: 100%;
   overflow: hidden;
 }
 .menu .row-scroll {
@@ -247,10 +251,13 @@ main section:nth-of-type(1) .direita .card-section:hover {
   scrollbar-width: none;
   gap: 8px;
   padding: 24px;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 .menu .row .card {
-  min-width: 160px;
-  flex-shrink: 0;
+  flex: 0 0 220px;
   aspect-ratio: 3/4.5;
   max-width: 225px;
   border: 1px solid #2a2a2a;
@@ -258,6 +265,7 @@ main section:nth-of-type(1) .direita .card-section:hover {
   background-color: #161616;
   overflow: hidden;
   transition: transform 0.2s ease-in-out;
+  scroll-snap-align: start;
 }
 .menu .row .card .cima {
   width: 100%;
@@ -320,6 +328,40 @@ main section:nth-of-type(1) .direita .card-section:hover {
 .menu .row .card:hover {
   transform: translateY(-5px);
   box-shadow: 1px 1px 2px 3px #007BFF;
+}
+
+@media (max-width: 768px) {
+  main section:nth-of-type(1) {
+    flex-direction: row;
+  }
+  main section:nth-of-type(1) .esquerda {
+    width: 50%;
+    gap: 16px;
+  }
+  main section:nth-of-type(1) .direita {
+    width: 50%;
+  }
+  main section:nth-of-type(1) .direita .card-section:nth-of-type(n + 2) {
+    display: none;
+  }
+  main section:nth-of-type(1) .direita .card-section {
+    max-width: 220px;
+  }
+  main section:nth-of-type(1) .direita .card-section .baixo h1 {
+    font-size: clamp(1rem, 1.2vw, 1.5rem);
+  }
+  main section:nth-of-type(1) .direita .card-section .baixo p {
+    font-size: clamp(0.8rem, 1vw, 1rem);
+  }
+  .menu .row .card {
+    max-width: 180px;
+  }
+  .menu .conteiner-scroll .row-scroll .linha-setas button {
+    display: none;
+  }
+  .menu .conteiner-scroll .row-scroll .linha-setas .setas {
+    text-decoration: underline;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

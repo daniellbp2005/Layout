@@ -32,7 +32,7 @@ nav ul p {
   font-family: "Montserrat", sans-serif;
   margin-right: 15px;
 }
-nav ul button {
+nav ul .btn {
   background-color: #007BFF;
   padding: 8px 8px;
   border: none;
@@ -43,7 +43,7 @@ nav ul button {
   font-size: clamp(0.8rem, 1vw, 1rem);
   cursor: pointer;
 }
-nav ul button:hover {
+nav ul .btn:hover {
   transform: translateY(-3px);
 }
 nav ul img {
@@ -91,6 +91,9 @@ nav ul:nth-of-type(1) li a::after {
 nav ul:nth-of-type(1) li a:hover::after {
   transform: scaleX(1);
 }
+nav ul:nth-of-type(1) li .active {
+  height: auto;
+}
 nav ul:nth-of-type(2) {
   display: flex;
   justify-content: center;
@@ -103,10 +106,110 @@ nav ul:nth-of-type(2) li a {
   align-items: center;
   flex-direction: row;
 }
+nav ul:nth-of-type(2) .dropdown, nav ul:nth-of-type(2) .dropdown-icon {
+  position: relative;
+}
+nav ul:nth-of-type(2) .dropdown button, nav ul:nth-of-type(2) .dropdown-icon button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background-color: transparent;
+  border: none;
+}
+nav ul:nth-of-type(2) .dropdown .menu-perfil-drop, nav ul:nth-of-type(2) .dropdown-icon .menu-perfil-drop {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  width: max-content;
+  height: auto;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  padding: 16px 8px;
+  transition: opacity 0.3s ease-in-out;
+}
+nav ul:nth-of-type(2) .dropdown:hover .menu-perfil-drop, nav ul:nth-of-type(2) .dropdown-icon:hover .menu-perfil-drop {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+nav ul:nth-of-type(2) .dropdown .menu-perfil-drop ul, nav ul:nth-of-type(2) .dropdown-icon .menu-perfil-drop ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 120px;
+  height: auto;
+  padding: 16px 8px;
+  text-align: center;
+  background-color: #161616;
+  border: 1px solid rgb(243, 219, 113);
+  border-radius: 16px;
+  z-index: 100;
+}
+nav ul:nth-of-type(2) .dropdown .menu-perfil-drop li, nav ul:nth-of-type(2) .dropdown-icon .menu-perfil-drop li {
+  color: #C9D1D9;
+  font-size: clamp(0.8rem, 1vw, 1rem);
+  font-family: "Inter", sans-serif;
+  transition: transform 0.2s ease;
+}
+nav ul:nth-of-type(2) .dropdown .menu-perfil-drop li:hover, nav ul:nth-of-type(2) .dropdown-icon .menu-perfil-drop li:hover {
+  text-decoration: underline;
+  color: #007BFF;
+}
 
 a {
   text-decoration: none;
   color: #F8F9FA;
+}
+
+.tab-bar {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  nav:not(.tab-bar) {
+    padding: 0 4%;
+    overflow: hidden;
+  }
+  ul:nth-of-type(1) .titulo {
+    margin: 0px;
+  }
+  ul:nth-of-type(1) {
+    gap: 8px;
+  }
+}
+@media (max-width: 768px) {
+  .active {
+    color: #007BFF;
+  }
+  .tab-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: #161616;
+    border-top: 1px solid rgb(243, 219, 113);
+    height: 64px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    text-align: center;
+    gap: 16px;
+  }
+  .tab-bar .tab-item {
+    flex: 1;
+  }
+  body {
+    padding-bottom: 64px;
+  }
+  nav ul:nth-of-type(1) li {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=header.css.map */
